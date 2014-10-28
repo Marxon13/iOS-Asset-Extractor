@@ -1,4 +1,4 @@
-<img src="https://raw.github.com/Marxon13/iOSAssetExtractor/master/ReadmeResources/iOSAssetExtractorBanner.png">
+<img src="https://raw.github.com/Marxon13/iOS-Asset-Extractor/master/ReadmeResources/iOSAssetExtractorBanner.png">
 
 iOS Asset Extractor
 =============
