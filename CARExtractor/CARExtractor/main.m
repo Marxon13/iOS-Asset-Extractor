@@ -99,7 +99,7 @@ void exportCarFileAtPath(NSString * carPath, NSString *outputDirectoryPath)
             CGImageWriteToFile(iphone2X, [outputDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@~iphone@2x.png", key]]);
         
         if (iphone3X && iphone3X != iphone2X)
-            CGImageWriteToFile(iphone2X, [outputDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@~iphone@3x.png", key]]);
+            CGImageWriteToFile(iphone3X, [outputDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@~iphone@3x.png", key]]);
         
         if (ipad1X && ipad1X != iphone1X)
             CGImageWriteToFile(ipad1X, [outputDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@~ipad.png", key]]);
