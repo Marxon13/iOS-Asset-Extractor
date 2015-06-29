@@ -119,7 +119,7 @@ int export(NSString *path, NSString *outputDirectoryPath, BOOL group, BOOL expor
     NSUInteger index = 1;
     NSUInteger count = validFiles.count;
     
-    for (NSString *path in validFiles) {
+    for (NSString *filePath in validFiles) {
         
         //-----------------------------------------------
         //Notify that we are processing a file
@@ -130,10 +130,11 @@ int export(NSString *path, NSString *outputDirectoryPath, BOOL group, BOOL expor
         //We have a file!
         
         //Is this a file type we should process?
-        NSString *extension = path.lastPathComponent.pathExtension;
+        NSString *extension = filePath.lastPathComponent.pathExtension;
         
         if ([extension.uppercaseString isEqualToString:@"CAR"] && exportCAR) {
-            NSLog(@"Processing file: %li/%li, %@", index, count, path);
+            NSString *logPath = [filePath substringFromIndex:path.length];
+            NSLog(@"Processing file: %li/%li, %@", index, count, logPath);
             //Extract the CAR file, access the car exceutable, and run that. We need to run it as a separate process since CoreUI seems to only allow loading of one asset catalouge per process. When a process tries to load a second, a bad access exception occurs.
             NSString *carExtractorLocation = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"CARExtractor"];
             
@@ -141,7 +142,7 @@ int export(NSString *path, NSString *outputDirectoryPath, BOOL group, BOOL expor
             NSTask *task = [[NSTask alloc] init];
             [task setLaunchPath:carExtractorLocation];
             
-            NSArray *arguments = @[@"-i", path, @"-o", outputPathForFile(path.stringByDeletingLastPathComponent, outputDirectoryPath, group)];
+            NSArray *arguments = @[@"-i", filePath, @"-o", outputPathForFile(filePath.stringByDeletingLastPathComponent, outputDirectoryPath, group)];
             [task setArguments:arguments];
             
             //Handle output
@@ -166,16 +167,18 @@ int export(NSString *path, NSString *outputDirectoryPath, BOOL group, BOOL expor
         }
         
         if ([extension.uppercaseString isEqualToString:@"PDF"] && exportPDF) {
-            NSLog(@"Processing file: %li/%li, %@", index, count, path);
+            NSString *logPath = [filePath substringFromIndex:path.length];
+            NSLog(@"Processing file: %li/%li, %@", index, count, logPath);
             //Extract the PDF file
-            copyFileAtPath(path, outputDirectoryPath, group);
+            copyFileAtPath(filePath, outputDirectoryPath, group);
             continue;
         }
         
         if ([extension.uppercaseString isEqualToString:@"PNG"] && exportPNG) {
-            NSLog(@"Processing file: %li/%li, %@", index, count, path);
+            NSString *logPath = [filePath substringFromIndex:path.length];
+            NSLog(@"Processing file: %li/%li, %@", index, count, logPath);
             //Extract the PNG file
-            copyFileAtPath(path, outputDirectoryPath, group);
+            copyFileAtPath(filePath, outputDirectoryPath, group);
             continue;
         }
     }
