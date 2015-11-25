@@ -136,7 +136,7 @@ int export(NSString *path, NSString *outputDirectoryPath, BOOL group, BOOL expor
             NSString *logPath = [filePath substringFromIndex:path.length];
             NSLog(@"Processing file: %li/%li, %@", index, count, logPath);
             //Extract the CAR file, access the car exceutable, and run that. We need to run it as a separate process since CoreUI seems to only allow loading of one asset catalouge per process. When a process tries to load a second, a bad access exception occurs.
-            NSString *carExtractorLocation = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"CARExtractor"];
+            NSString *carExtractorLocation = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"iOSAssetExtractor"];
             
             //Create the task to run the process
             NSTask *task = [[NSTask alloc] init];
