@@ -161,7 +161,7 @@ int export(NSString *path, NSString *outputDirectoryPath, BOOL group, BOOL expor
             [task launch];
             [task waitUntilExit];
             
-            [[NSNotificationCenter defaultCenter] removeObserver:nil name:NSFileHandleDataAvailableNotification object:[pipe fileHandleForReading]];
+            [[NSNotificationCenter defaultCenter] removeObserver:[pipe fileHandleForReading] name:NSFileHandleDataAvailableNotification object:[pipe fileHandleForReading]];
             
             continue;
         }

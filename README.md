@@ -8,10 +8,11 @@ Features:
 -------------
 
 * Exports PDF, PNG, and CAR resources.
+* Exports image and PDF assets from CAR files.
 * Takes a single file, or a directory for searching as input.
 * Exports the files to a single directory, or group by the bundle they came from.
 
-Useage:
+Usage:
 -------------
 
 **Note:** The iOSAssetExtractor executable must be next to the CARExtractor executable in order for the program to work.
@@ -26,9 +27,24 @@ The "g" flag is optional. Set it if you want the output to be grouped by bundle.
 
 The "t" flag is optional. Set it to only export specific file types. The types should be listed a a comma separated string. The types currently supported are "PDF", "CAR", and "PNG".
 
-**Example:** Export the entire SDK:
+Examples:
+---------
 
-```./iOSAssetExtractor -i /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk -o /Users/Brandon/Desktop/Export -g 1```
+**Export iOS Simulator SDK:**
+
+```./iOSAssetExtractor -i /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk -o /Users/bmcquilkin/Desktop/ExportIOS -g 1```
+
+**Export TVOS Simulator SDK:**
+
+```./iOSAssetExtractor -i /Applications/Xcode.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator.sdk -o /Users/bmcquilkin/Desktop/ExportTV -g 1```
+
+**Export WatchOS Simulator SDK:**
+
+```./iOSAssetExtractor -i /Applications/Xcode.app/Contents/Developer/Platforms/WatchSimulator.platform/Developer/SDKs/WatchSimulator.sdk -o /Users/bmcquilkin/Desktop/ExportWatch -g 1```
+
+**Export OSX SDK:**
+
+```./iOSAssetExtractor -i /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -o /Users/bmcquilkin/Desktop/ExportOSX -g 1```
 
 Project Notes:
 --------
@@ -45,7 +61,7 @@ License:
 --------
 MIT License
 
-> Copyright (c) 2014 Brandon McQuilkin
+> Copyright (c) 2016 Brandon McQuilkin
 > 
 > Permission is hereby granted, free of charge, to any person obtaining 
 >a copy of this software and associated documentation files (the  
